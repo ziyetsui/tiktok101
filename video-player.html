@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频播放 - TikTok 101</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="logo">TikTok 101</a>
+                <div class="nav-links">
+                    <a href="tutorials.html">TikTok 教程</a>
+                    <a href="videos.html" class="active">TikTok 视频</a>
+                    <a href="features.html">功能</a>
+                    <a href="article.html">文章</a>
+                    <a href="category.html">分类</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="/guide" class="nav-link">入门指南</a>
+                <button class="theme-toggle">🌙</button>
+                <button class="translate">🌐</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 视频播放区域 -->
+    <main class="video-player-content">
+        <div class="container">
+            <div class="video-player-wrapper">
+                <iframe id="youtube-player" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <div class="video-info-section">
+                <h1 id="video-title"></h1>
+                <p id="video-description"></p>
+                <div class="video-meta">
+                    <span id="publish-date"></span>
+                    <span>•</span>
+                    <span id="view-count"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>TikTok 101</h2>
+                    <p>让创作更简单</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h3>学习资源</h3>
+                        <ul>
+                            <li><a href="tutorials.html">创作教程</a></li>
+                            <li><a href="videos.html">示例视频</a></li>
+                            <li><a href="features.html">特效指南</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>内容分类</h3>
+                        <ul>
+                            <li><a href="category.html">热门分类</a></li>
+                            <li><a href="article.html">专业文章</a></li>
+                            <li><a href="#">最新动态</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>更多</h3>
+                        <ul>
+                            <li><a href="#">关于我们</a></li>
+                            <li><a href="#">联系我们</a></li>
+                            <li><a href="#">使用条款</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TikTok 101. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 从 URL 获取视频 ID
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoId = urlParams.get('v');
+        
+        // 视频数据
+        const videoData = {
+            'J7-r4ouPmwE': {
+                title: 'TikTok 新手完整教程：如何拍摄、编辑并设置账号',
+                description: '全面的 TikTok 入门指南，包括账号设置、拍摄技巧和编辑方法。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'iMgD5LDiK9A': {
+                title: 'TikTok 商店销售指南：如何在 TikTok 上销售产品',
+                description: '学习如何使用 TikTok 商店功能销售产品，提升销售转化率。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'lQEWAE3sU2w': {
+                title: 'TikTok 直播技巧：如何增加观众互动',
+                description: '学习如何通过直播功能吸引更多观众，提高互动率。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'URvQg7JuUfA': {
+                title: 'TikTok 剪辑教程：制作引人入胜的短视频',
+                description: '掌握专业的视频剪辑技巧，让你的内容更有吸引力。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'ZTYFH01elWY': {
+                title: 'TikTok 特效制作：让视频更有创意',
+                description: '探索 TikTok 的特效功能，制作独特的创意内容。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'Lu-ztj-gc90': {
+                title: 'TikTok 运营策略：如何吸引更多粉丝',
+                description: '学习有效的账号运营方法，提升粉丝增长速度。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'xP9T4J1vnRA': {
+                title: 'TikTok 变现指南：多元化收入来源',
+                description: '了解 TikTok 的各种变现方式，实现收入多元化。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'xbWFG_ECUhc': {
+                title: 'TikTok 数据分析：优化内容策略',
+                description: '学习如何分析数据指标，优化你的内容策略。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'Vpcest4DeqU': {
+                title: 'TikTok 账号优化指南',
+                description: '学习如何优化你的 TikTok 账号，提升曝光度和关注度。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'ZyJsH9X0MXY': {
+                title: 'TikTok 创意拍摄技巧',
+                description: '掌握专业的视频拍摄技巧，让你的内容更具吸引力。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'vfHt3iXRGOE': {
+                title: 'TikTok 内容规划策略',
+                description: '学习如何制定有效的内容策略，提高账号增长速度。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'IF-8Ad7bfcI': {
+                title: 'TikTok 热门音乐使用指南',
+                description: '了解如何选择和使用热门音乐，提升视频效果。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            '2ansoZCKeNg': {
+                title: 'TikTok 特效制作教程',
+                description: '学习使用 TikTok 特效，让你的视频更有创意。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            '2b4OPL4Tl7M': {
+                title: 'TikTok 直播技巧分享',
+                description: '掌握直播技巧，提升直播间互动和转化。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'ozEYiN3N9Rs': {
+                title: 'TikTok 变现方法详解',
+                description: '探索 TikTok 多种变现方式，实现收入增长。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'oQZVPyiL3P0': {
+                title: 'TikTok 数据分析指南',
+                description: '学习解读数据指标，优化内容策略。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'EpVZzcIiZtQ': {
+                title: 'TikTok 品牌合作技巧',
+                description: '了解如何与品牌合作，创造双赢机会。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'CkdYjimPUDw': {
+                title: 'TikTok 短视频剪辑教程',
+                description: '掌握专业的剪辑技巧，提升视频质量。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'p_RFe0qNuUU': {
+                title: 'TikTok 运营高级技巧',
+                description: '学习高级运营策略，实现账号快速增长。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            '5CudnzjAf2I': {
+                title: 'TikTok 内容创作指南',
+                description: '探索创意内容制作方法，提升创作效率。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'ymixzOQ59S8': {
+                title: 'TikTok 商业账号运营',
+                description: '学习商业账号运营技巧，提升品牌影响力。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'GSTQclus5-Y': {
+                title: 'TikTok 粉丝运营策略',
+                description: '掌握粉丝运营方法，提高粉丝忠诚度。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'w9H-EVHGALY': {
+                title: 'TikTok 视频标题优化',
+                description: '学习标题优化技巧，提升视频点击率。',
+                date: '2025-01-01',
+                views: '新上线'
+            },
+            'vt7rVaTTNek': {
+                title: 'TikTok 账号定位指南',
+                description: '了解如何准确定位账号，找准目标受众。',
+                date: '2025-01-01',
+                views: '新上线'
+            }
+        };
+
+        // 设置视频播放器
+        if (videoId && videoData[videoId]) {
+            const player = document.getElementById('youtube-player');
+            player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+
+            // 更新视频信息
+            const data = videoData[videoId];
+            document.getElementById('video-title').textContent = data.title;
+            document.getElementById('video-description').textContent = data.description;
+            document.getElementById('publish-date').textContent = data.date;
+            document.getElementById('view-count').textContent = data.views;
+            document.title = `${data.title} - TikTok 101`;
+        }
+    </script>
+</body>
+</html>
